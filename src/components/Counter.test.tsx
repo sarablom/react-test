@@ -1,4 +1,5 @@
 import { render, screen, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
 import Counter from './Counter';
 
 test('render component', () => {
@@ -6,7 +7,19 @@ test('render component', () => {
 })
 
 test('value 1 shows on button', () => {
-    const {getByText} = render(<Counter />)
-    const counter = getByText('Value 1')
-    const counterMessage = within(counter).getByText('Value 1')
+    render(<Counter />);
+
+    const value = screen.getByText(/Value 1/i);
+    expect(value).toBeInTheDocument();
+})
+
+it('displays the value 2 when user clicks button', () => {
+    render(<Counter />)
+
+    const button = screen.getByRole('button')
+
+    userEvent.click(button)
+
+    const element = screen.getByText(/Value 2/i)
+    expect(element).toBeInTheDocument()
 })

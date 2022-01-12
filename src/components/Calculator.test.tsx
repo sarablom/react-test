@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
 import Calculator from './Calculator';
 
 describe('Calculator components', () => {
@@ -13,9 +14,32 @@ describe('Calculator components', () => {
         expect(element).toBeInTheDocument()
     })
 
-    //displays the value 2 when user clicks +1
+    it('displays the value 2 when user clicks +1', () => {
+        render( <Calculator /> )
+		const button = screen.getByTestId('button-increase')
+		userEvent.click(button)
 
-    //displays the value 0 when user clicks -1
+		const element = screen.getByText(/Value: 2/i)
+		expect(element).toBeInTheDocument()
+    })
 
-    //displays the value 0 when user clicks clear
+    it('displays the value 0 when user clicks -1', () => {
+        render( <Calculator /> );
+
+        const button = screen.getByTestId('button-decrease');
+        userEvent.click(button);
+
+        const element = screen.getByText(/Value: 0/i);
+        expect(element).toBeInTheDocument();
+    })
+
+    it('displays the value 0 when user clicks clear', () => {
+        render( <Calculator />);
+
+        const button = screen.getByTestId('button-clear');
+        userEvent.click(button);
+
+        const element = screen.getByText(/Value: 0/i)
+        expect(element).toBeInTheDocument();
+    })
 })

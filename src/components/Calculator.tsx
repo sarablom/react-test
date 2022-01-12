@@ -1,17 +1,19 @@
-
+import {useState} from 'react';
 
 function Calculator() {
+    const [value, setValue] = useState(1);
+
     return (
         <>
             <header>
                 <h1>Calculator</h1>
             </header>
             <main>
-                <button>Clear</button>
-                <button>+1</button>
-                <button>-1</button>
+                <button onClick={() => setValue(0)} data-testid="button-clear">Clear</button>
+                <button onClick={() => setValue(value + 1)} data-testid="button-increase">+1</button>
+                <button onClick={() => setValue(value - 1)} data-testid="button-decrease">-1</button>
                 <p className="result">
-                    <code>Value: 1</code>
+                    <code>Value: {value}</code>
                 </p>
             </main>
         </>

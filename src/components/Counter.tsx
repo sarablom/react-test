@@ -1,9 +1,10 @@
-import React from 'react'
+import {useState} from 'react'
 
 function Counter() {
+    const [count, setCount] = useState(1)
     return (
-        <button>
-            Value 1
+        <button onClick={() => setCount(count + 1)}>
+            Value {count}
         </button>
     )
 }
