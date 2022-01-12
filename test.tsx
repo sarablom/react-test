@@ -26,4 +26,6 @@ Feature: Logging in
 
 testing-library.com
 Core API - queries
+
+https://github.com/testing-library/jest-dom
 */
