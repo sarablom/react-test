@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import Counter from './Counter';
 
@@ -21,5 +21,17 @@ it('displays the value 2 when user clicks button', () => {
     userEvent.click(button)
 
     const element = screen.getByText(/Value 2/i)
+    expect(element).toBeInTheDocument()
+})
+
+it('displays the value 3 when user clicks button twice', () => {
+    render(<Counter />)
+
+    const button = screen.getByRole('button')
+
+    userEvent.click(button)
+    userEvent.click(button)
+
+    const element = screen.getByText(/Value 3/i)
     expect(element).toBeInTheDocument()
 })
