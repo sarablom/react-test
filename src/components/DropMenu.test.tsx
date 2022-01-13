@@ -28,8 +28,12 @@ describe("Dropdown menu component", () => {
 
     const items = screen.queryAllByRole('listitem');
     const firstItem = items[0];
-    expect(firstItem).toBeInTheDocument();
 
+    //One way
+    expect(firstItem).toBeInTheDocument();
+    //Or another
+    expect(items.length).toBeGreaterThan(0);
+    //You can also check if ul is in document
   })
 
   it('menu items hides when user clicks menu button again', () => {
@@ -40,7 +44,6 @@ describe("Dropdown menu component", () => {
     userEvent.click(button);
 
     const items = screen.queryAllByRole('listitem');
-    const firstItem = items[0];
-    expect(firstItem).toBeUndefined();
+    expect(items.length).toBe(0);
 })
 });
