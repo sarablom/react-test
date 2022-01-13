@@ -4,6 +4,7 @@ import './App.css';
 import Calculator from './components/Calculator';
 import Counter from './components/Counter';
 import DropMenu from './components/DropMenu';
+import Dinopedia from './components/dinosaur/Dinopedia';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
      <Calculator />
      <Counter />
      <DropMenu />
+     <Dinopedia />
     </div>
   );
 }
