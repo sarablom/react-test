@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from '@testing-library/user-event';
 import DropMenu from "./DropMenu";
 
 describe("Dropdown menu component", () => {
@@ -14,10 +15,32 @@ describe("Dropdown menu component", () => {
 
   it("menu items does not show initally", () => {
     render(<DropMenu />);
-    const item = screen.getByRole('listitem');
-    expect(item).not.toBeInTheDocument();
+    const items = screen.queryAllByRole('listitem');
+    const firstItem = items[0];
+    expect(firstItem).toBeUndefined();
   });
-});
 
-//menu items do show when the user clicks the menu button
-//menu items hides when user clicks menu button again
+  it('menu items do show when the user clicks the menu button', () => {
+      render(<DropMenu />);
+    const button = screen.getByRole('button', {name: 'Menu'});
+
+    userEvent.click(button);
+
+    const items = screen.queryAllByRole('listitem');
+    const firstItem = items[0];
+    expect(firstItem).toBeInTheDocument();
+
+  })
+
+  it('menu items hides when user clicks menu button again', () => {
+    render(<DropMenu />);
+    const button = screen.getByRole('button', {name: 'Menu'});
+
+    userEvent.click(button);
+    userEvent.click(button);
+
+    const items = screen.queryAllByRole('listitem');
+    const firstItem = items[0];
+    expect(firstItem).toBeUndefined();
+})
+});
