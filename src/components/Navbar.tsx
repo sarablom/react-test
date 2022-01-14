@@ -3,22 +3,24 @@ import styled from "styled-components/macro";
 
 interface Props {
     items: string[];
+    setView: Function;
   }
 
-function Navbar({ items }: Props) {
-    const [isActive, setIsActive] = useState('Start');
+function Navbar({ items, setView }: Props) {
+    const [isActive, setIsActive] = useState<string>('Start');
 
-    function addClassHandler(e: any) { 
+    function addClassHandler(e: any, index: number) { 
         setIsActive(e.target.innerHTML);
+        setView(index)
     }
 
   return (
     <NavbarWrapper>
       <ListWrapper>
-        {items.map((item) => (
+        {items.map((item, index) => (
           <ListElement 
             key={item} 
-            onClick={(e) => addClassHandler(e)}
+            onClick={(e: object) => addClassHandler(e, index)}
             className={isActive === item ? 'selected' : ''}
             >
             {item}
