@@ -12,7 +12,7 @@ describe('component Navbar', () => {
     it('selected-class is activated when user clicks a link', () => {
         render(<Navbar items={items} />);
 
-        const selectedLi = screen.getByText(/Home/i);
+        const selectedLi = screen.getByText(/Start/i);
 
         expect(selectedLi).toHaveClass('selected')
     })
