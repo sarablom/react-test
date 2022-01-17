@@ -5,11 +5,10 @@ import Counter from './components/Counter';
 import DropMenu from './components/DropMenu';
 import Dinopedia from './components/dinosaur/Dinopedia';
 import Navbar from './components/Navbar';
+import Chat from './components/Chat';
 
 function App() {
   const [view, setView] = useState<number>(0);
-
-  console.log(view);
   
   return (
     <div className="App">
@@ -18,6 +17,7 @@ function App() {
      <Counter />
      <DropMenu />
      <Dinopedia />
+     <Chat />
     </div>
   );
 }

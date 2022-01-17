@@ -13,8 +13,6 @@ describe('component Navbar', () => {
     it('selected-class is activated when user clicks a link', () => {
         render(<Navbar items={items} setView={setViewMock} />);
         const selectedLi = screen.getByText(/Start/i);
-        expect(selectedLi).toHaveClass('selected');
-
-        
+        expect(selectedLi).toHaveClass('selected');        
     })
 })
