@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import './App.css';
-import Calculator from './components/Calculator';
-import Counter from './components/Counter';
-import DropMenu from './components/DropMenu';
+import Calculator from './components/calculator/Calculator';
+import Counter from './components/counter/Counter';
+import DropMenu from './components/dropmenu/DropMenu';
 import Dinopedia from './components/dinosaur/Dinopedia';
-import Navbar from './components/Navbar';
-import Chat from './components/Chat';
+import Navbar from './components/navbar/Navbar';
+import Chat from './components/chat/Chat';
+import Validation from './components/validation/Validation';
 
 function App() {
   const [view, setView] = useState<number>(0);
@@ -13,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <Navbar items={['Start', 'Info', 'About', 'Profile']} setView={setView} />
+      <Validation />
      <Calculator />
      <Counter />
      <DropMenu />
