@@ -33,4 +33,31 @@ describe("chat component", () => {
 
     expect(inputField).toBeNull();
   });
+
+  it("input field turns empty when user clicks enter", () => {
+    render(<Chat />);
+
+    const button = screen.getByRole("button");
+    userEvent.click(button);
+    userEvent.type(screen.getByRole('textbox'), 'Hello World!{enter}');
+    const inputField = screen.queryByRole("textbox");
+
+    expect(inputField).toHaveValue("")
+  })
+
+  it("displays the input value in chat history", () => {
+    render(<Chat />);
+
+    const button = screen.getByRole("button");
+    userEvent.click(button);
+    userEvent.type(screen.getByRole('textbox'), 'Hello World!{enter}');
+
+    const element = screen.getByText(/Hello World!/i)
+    expect(element).toBeInTheDocument();
+
+    userEvent.type(screen.getByRole('textbox'), 'Hello World!{enter}');
+
+    const listItems = screen.queryAllByRole("listitem");
+    expect(listItems.length).toBe(2);    
+  })
 });
