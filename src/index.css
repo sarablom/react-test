@@ -15,3 +15,12 @@ code {
 .selected {
   color: rgb(226, 136, 136);
 }
+
+.valid {
+  border: 2px solid green;
+}
+
+.invalid {
+  border: 2px solid red;
+}
+
