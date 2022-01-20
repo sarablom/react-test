@@ -24,3 +24,26 @@ code {
   border: 2px solid red;
 }
 
+.contact-list {
+	display: flex;
+}
+.contact-list > section {
+	border: 1px solid gray;
+	border-radius: 0.4em;
+	padding: 0.5em 1em;
+	display: flex;
+	flex-direction: column;
+	width: 20em;
+	margin: 1em;
+	position: relative;
+}
+.contact-list h3 {
+	margin: 0em;
+	padding: 0.3em 0em;
+}
+.contact-list section .star {
+	position: absolute;
+	right: 0em;
+	top: 0em;
+}
+
