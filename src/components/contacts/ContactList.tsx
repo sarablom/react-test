@@ -1,30 +1,39 @@
-import React from "react";
+import { useState } from 'react'
+import { Contact } from '../../models/Contact'
 
+const data: Contact[] = [
+	{
+		id: '9393',
+		name: 'Anna Andersson',
+		phoneNumbers: ['031-12345678', '0733-1234123']
+	},
+	{
+		id: '349rtk',
+		name: 'Bo Bengtsson',
+		phoneNumbers: ['031-33333333']
+	},
+	{
+		id: '32d3',
+		name: 'Cecilia Circus',
+		phoneNumbers: ['031-55555555', '0733-5555555']
+	}
+]
 
-function ContactList() {
-  return (
-    <ul className="contact-list">
-      <li data-testid="contact1">
-        <h3> Anna Andersson </h3>
-        <div>031-12345678</div>
-        <div>0733-1234123</div>
-        <div className="star">
-          <div>⭐</div>
-          <div>🖊️</div>
-        </div>
-      </li>
-      <li data-testid="contact2">
-        <h3> Bo Bengtsson </h3>
-        <div>031-33333333</div>
-        <div>0733-4444444</div>
-      </li>
-      <li data-testid="contact3">
-        <h3> Cecilia Circus </h3>
-        <div>031-55555555</div>
-        <div>0733-5555555</div>
-      </li>
-    </ul>
-  );
+const ContactList = () => {
+	const [contacts, setContacts] = useState<Contact[]>(data)
+	
+	return (
+		<ul className="contact-list">
+			{contacts.map(c => (
+				<li key={c.id} data-testid={'contact' + c.id}>
+					<h3> {c.name} </h3>
+					{c.phoneNumbers.map(phone => (
+						<div key={phone}> {phone} </div>
+					))}
+				</li>
+			))}
+		</ul>
+	)
 }
 
-export default ContactList;
+export default ContactList
