@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Contact } from '../../models/Contact'
+import ContactCard from './ContactCard'
 
 const data: Contact[] = [
 	{
@@ -25,12 +26,7 @@ const ContactList = () => {
 	return (
 		<ul className="contact-list">
 			{contacts.map(c => (
-				<li key={c.id} data-testid={'contact' + c.id}>
-					<h3> {c.name} </h3>
-					{c.phoneNumbers.map(phone => (
-						<div key={phone}> {phone} </div>
-					))}
-				</li>
+				<ContactCard contact={c} />
 			))}
 		</ul>
 	)
