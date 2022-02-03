@@ -10,7 +10,7 @@ import Validation from "./components/validation/Validation";
 import Contacts from "./components/contacts/ContactList";
 
 function App() {
-  const [view, setView] = useState<number>(0);
+  const [, setView] = useState<number>(0);
 
   return (
     <div className="App">
